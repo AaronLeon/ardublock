@@ -8,10 +8,10 @@ import com.ardublock.translator.block.exception.BlockException;
 import com.ardublock.translator.block.exception.SocketNullException;
 import com.ardublock.translator.block.exception.SubroutineNotDeclaredException;
 
-public class FillScreenBlock extends TranslatorBlock
+public class WriteScreenBlock extends TranslatorBlock
 {
 
-	public FillScreenBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
+	public WriteScreenBlock(Long blockId, Translator translator, String codePrefix, String codeSuffix, String label)
 	{
 		super(blockId, translator, codePrefix, codeSuffix, label);
 	}
@@ -25,7 +25,7 @@ public class FillScreenBlock extends TranslatorBlock
 		translator.addDefinitionCommand("HT1632LEDMatrix " + ht1632Name + " = HT1632LEDMatrix(2,3,4);\n");
 		translator.addSetupCommand(ht1632Name + ".begin(HT1632_COMMON_16NMOS);\n");
 
-		String ret = ht1632Name + ".fillScreen();\n";
+		String ret = ht1632Name + ".writeScreen();\n";
 
 		return codePrefix + ret + codeSuffix;
 	}

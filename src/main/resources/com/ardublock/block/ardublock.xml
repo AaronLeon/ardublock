@@ -1899,14 +1899,33 @@
 			<description>
 				<text>Fills LED Matrix</text>
 			</description>
-			<!-- <BlockConnectors>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.pin_number">
-					<DefaultArg genus-name="number" label="2" />
-				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="plug" />
-			</BlockConnectors> -->
 		</BlockGenus>
-
+		<BlockGenus name="clear_screen" kind="command" color="0 100 90" initlabel="bg.clear_screen">
+			<description>
+				<text>Clears LED Matrix</text>
+			</description>
+		</BlockGenus>
+		<BlockGenus name="write_screen" kind="command" color="0 100 90" initlabel="bg.write_screen">
+			<description>
+				<text>Writes pending commands to LED Matrix</text>
+			</description>
+		</BlockGenus>
+		<BlockGenus name="write_text" kind="command" color="0 100 90" initlabel="bg.write_text">
+			<description>
+				<text>Writes pending commands to LED Matrix</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="string" connector-kind="socket" label="bc.text">
+					<DefaultArg genus-name="message" label="ABCD" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
 		<!-- ******************** Storage *************** -->
 		<BlockGenus name="eeprom_read_int" kind="data" color="0 100 90" initlabel="bg.eeprom_read_int">
 			<description>
@@ -9272,6 +9291,9 @@
 			</BlockDrawer>
 			<BlockDrawer button-color="194 59 34" name="bd.ht1632">
 				<BlockGenusMember>fill_screen</BlockGenusMember>
+				<BlockGenusMember>clear_screen</BlockGenusMember>
+				<BlockGenusMember>write_screen</BlockGenusMember>
+				<BlockGenusMember>write_text</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="26 97 218" name="bd.scoop">
 			  <BlockGenusMember>scoop_task</BlockGenusMember>
