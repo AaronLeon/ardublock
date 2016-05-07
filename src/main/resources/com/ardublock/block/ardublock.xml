@@ -1895,17 +1895,17 @@
 		</BlockGenus>
 
 		<!-- ******************** HT1632 ********************** -->
-		<BlockGenus name="fill_screen" kind="command" color="0 100 90" initlabel="bg.fill_screen">
+		<BlockGenus name="fill_screen" kind="command" color="102 255 51" initlabel="bg.fill_screen">
 			<description>
 				<text>Fills LED Matrix</text>
 			</description>
 		</BlockGenus>
-		<BlockGenus name="clear_screen" kind="command" color="0 100 90" initlabel="bg.clear_screen">
+		<BlockGenus name="clear_screen" kind="command" color="102 255 51" initlabel="bg.clear_screen">
 			<description>
 				<text>Clears LED Matrix</text>
 			</description>
 		</BlockGenus>
-		<BlockGenus name="write_screen" kind="command" color="0 100 90" initlabel="bg.write_screen">
+		<BlockGenus name="write_screen" kind="command" color="102 255 51" initlabel="bg.write_screen">
 			<description>
 				<text>Writes pending commands to LED Matrix</text>
 			</description>
@@ -1918,11 +1918,136 @@
 				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
 					<DefaultArg genus-name="number" label="0" />
 				</BlockConnector>
-				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_y">
 					<DefaultArg genus-name="number" label="0" />
 				</BlockConnector>
 				<BlockConnector connector-type="string" connector-kind="socket" label="bc.text">
 					<DefaultArg genus-name="message" label="ABCD" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="set_font_size" kind="command" color="205 133 63" initlabel="bg.set_font_size">
+			<description>
+				<text>Sets font size</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.size">
+					<DefaultArg genus-name="number" label="1" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="set_brightness" kind="command" color="205 133 63" initlabel="bg.set_brightness">
+			<description>
+				<text>Sets brightness of matrix (0-15)</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.brightness">
+					<DefaultArg genus-name="number" label="7" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="draw_pixel" kind="command" color="0 100 90" initlabel="bg.draw_pixel">
+			<description>
+				<text>Draws a pixel at the coordinate (x,y). The Clear? field specifies whether the selected pixel is filled (true) or erased (false)</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_y">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="boolean" connector-kind="socket" label="bc.clear?">
+					<DefaultArg genus-name="true" label="True" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="draw_line" kind="command" color="0 100 90" initlabel="bg.draw_line">
+			<description>
+				<text>Draws a line connecting the two given endpoints (x1,y1) and (x2,y2)</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x1">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_y1">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x2">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_y2">
+					<DefaultArg genus-name="number" label="15" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="draw_rectangle" kind="command" color="0 100 90" initlabel="bg.draw_rectangle">
+			<description>
+				<text>Draws the outline of a rectangle located at (x,y) with the given height and width</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_y">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.height">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.width">
+					<DefaultArg genus-name="number" label="15" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="draw_circle" kind="command" color="0 100 90" initlabel="bg.draw_circle">
+			<description>
+				<text>Draws the outline of a circle at (x,y) with the given radius</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_y">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.radius">
+					<DefaultArg genus-name="number" label="4" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fill_rectangle" kind="command" color="0 100 90" initlabel="bg.fill_rectangle">
+			<description>
+				<text>Fills a rectangle located at (x,y) with the given height and width</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_y">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.height">
+					<DefaultArg genus-name="number" label="23" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.width">
+					<DefaultArg genus-name="number" label="15" />
+				</BlockConnector>
+			</BlockConnectors>
+		</BlockGenus>
+		<BlockGenus name="fill_circle" kind="command" color="0 100 90" initlabel="bg.fill_circle">
+			<description>
+				<text>Fills a circle located at (x,y) with the given height and width</text>
+			</description>
+			<BlockConnectors>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_x">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.index_y">
+					<DefaultArg genus-name="number" label="0" />
+				</BlockConnector>
+				<BlockConnector connector-type="number" connector-kind="socket" label="bc.radius">
+					<DefaultArg genus-name="number" label="4" />
 				</BlockConnector>
 			</BlockConnectors>
 		</BlockGenus>
@@ -9294,6 +9419,14 @@
 				<BlockGenusMember>clear_screen</BlockGenusMember>
 				<BlockGenusMember>write_screen</BlockGenusMember>
 				<BlockGenusMember>write_text</BlockGenusMember>
+				<BlockGenusMember>set_font_size</BlockGenusMember>
+				<BlockGenusMember>set_brightness</BlockGenusMember>
+				<BlockGenusMember>draw_pixel</BlockGenusMember>
+				<BlockGenusMember>draw_line</BlockGenusMember>
+				<BlockGenusMember>draw_rectangle</BlockGenusMember>
+				<BlockGenusMember>draw_circle</BlockGenusMember>
+				<BlockGenusMember>fill_rectangle</BlockGenusMember>
+				<BlockGenusMember>fill_circle</BlockGenusMember>
 			</BlockDrawer>
 			<BlockDrawer button-color="26 97 218" name="bd.scoop">
 			  <BlockGenusMember>scoop_task</BlockGenusMember>
